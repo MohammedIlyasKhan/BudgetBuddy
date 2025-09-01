@@ -13,6 +13,8 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import android.os.Environment;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
@@ -33,7 +35,8 @@ public class ExportUtils {
     // Export expenses to CSV
     public static void exportToCSV(Context context, List<Expense> expenses) {
         String fileName = "BudgetBuddy_Expenses.csv";
-        File exportDir = new File(context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), "BudgetBuddy");
+        File exportDir = new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_DOWNLOADS), "BudgetBuddy");
         if (!exportDir.exists()) {
             exportDir.mkdirs();
         }
@@ -59,7 +62,8 @@ public class ExportUtils {
     // Export expenses to PDF
     public static void exportToPDF(Context context, List<Expense> expenses) {
         String fileName = "BudgetBuddy_Expenses.pdf";
-        File exportDir = new File(context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), "BudgetBuddy");
+        File exportDir = new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_DOWNLOADS), "BudgetBuddy");
         if (!exportDir.exists()) {
             exportDir.mkdirs();
         }
